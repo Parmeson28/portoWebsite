@@ -1,6 +1,6 @@
 package com.portoWebsite.PortoMaquinas.model;
 
-public class Produto {
+public class Product {
     private String name;
     private String id;
     private float price;
