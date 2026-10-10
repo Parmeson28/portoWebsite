@@ -1,9 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
 </head>
 <body>
-    
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+        <i class="bi bi-grid-fill"></i> Admin Panel
+    </div>
+    <ul class="sidebar-nav">
+        <li><a href="#" class="active"><i class="bi bi-house-door"></i> Dashboard</a></li>
+        <li><a href="#"><i class="bi bi-people"></i> Usuários</a></li>
+        <li><a href="#"><i class="bi bi-box-seam"></i> Produtos</a></li>
+        <li><a href="#"><i class="bi bi-receipt"></i> Pedidos</a></li>
+        <li><a href="#"><i class="bi bi-bar-chart-line"></i> Relatórios</a></li>
+        <li><a href="#"><i class="bi bi-gear"></i> Configurações</a></li>
+    </ul>
+    <div class="sidebar-footer">
+        <span>&copy; 2026</span>
+        <a href="/logout"><i class="bi bi-box-arrow-right"></i> Sair</a>
+    </div>
+</aside>
+
+<div class="sidebar-backdrop" id="backdrop" onclick="closeSidebar()"></div>
+
+<!-- Main content -->
+<div class="main">
+    <header class="topbar">
+        <div class="topbar-left">
+            <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+                <i class="bi bi-list"></i>
+            </button>
+            <h2>Dashboard</h2>
+        </div>
+        <div class="topbar-right">
+            <span class="admin-name">Admin</span>
+            <div class="avatar-sm">A</div>
+        </div>
+    </header>
+
+    <div class="content">
+        <!-- Stat cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="bi bi-people-fill"></i></div>
+                    <div class="stat-info"><h3>128</h3><span>Usuários</span></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="bi bi-box-seam-fill"></i></div>
+                    <div class="stat-info"><h3>54</h3><span>Produtos</span></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="bi bi-cart-fill"></i></div>
+                    <div class="stat-info"><h3>312</h3><span>Pedidos</span></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class="bi bi-currency-dollar"></i></div>
+                    <div class="stat-info"><h3>R$ 18.4k</h3><span>Receita</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="card-panel">
+            <div class="card-panel-header">
+                <h3>Usuários recentes</h3>
+                <button class="btn-sm-action"><i class="bi bi-plus-lg"></i> Novo</button>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Maria Silva</td>
+                            <td>maria@email.com</td>
+                            <td><span class="badge-status badge-active">Ativo</span></td>
+                            <td class="action-icons">
+                                <a href="#" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                <a href="#" title="Excluir"><i class="bi bi-trash3"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>João Pereira</td>
+                            <td>joao@email.com</td>
+                            <td><span class="badge-status badge-pending">Pendente</span></td>
+                            <td class="action-icons">
+                                <a href="#" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                <a href="#" title="Excluir"><i class="bi bi-trash3"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ana Costa</td>
+                            <td>ana@email.com</td>
+                            <td><span class="badge-status badge-active">Ativo</span></td>
+                            <td class="action-icons">
+                                <a href="#" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                <a href="#" title="Excluir"><i class="bi bi-trash3"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Carlos Mendes</td>
+                            <td>carlos@email.com</td>
+                            <td><span class="badge-status badge-blocked">Bloqueado</span></td>
+                            <td class="action-icons">
+                                <a href="#" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                <a href="#" title="Excluir"><i class="bi bi-trash3"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
 </body>
 </html>
