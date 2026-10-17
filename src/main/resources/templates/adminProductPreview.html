@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar anúncio | Porto Máquinas</title>
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/product-editor.css" rel="stylesheet">
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><i class="bi bi-grid-fill" aria-hidden="true"></i> Admin Panel</div>
+    <ul class="sidebar-nav">
+        <li><a href="/adminPanel"><i class="bi bi-house-door" aria-hidden="true"></i> Dashboard</a></li>
+        <li><a href="/admin/products/preview" class="active" aria-current="page"><i class="bi bi-box-seam" aria-hidden="true"></i> Produtos</a></li>
+    </ul>
+    <div class="sidebar-footer"><span>&copy; 2026 Porto Máquinas</span></div>
+</aside>
+<div class="sidebar-backdrop" id="backdrop"></div>
+
+<main class="main listing-admin">
+    <header class="topbar listing-admin-topbar">
+        <div class="topbar-left">
+            <button type="button" class="hamburger" aria-label="Abrir menu"><i class="bi bi-list" aria-hidden="true"></i></button>
+            <h2>Produtos</h2>
+        </div>
+        <a class="product-back-link" href="/adminPanel"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar ao painel</a>
+    </header>
+
+    <div class="content product-editor-page listing-page" id="productListingEditor">
+        <div class="product-page-heading">
+            <span class="product-eyebrow">CATÁLOGO / NOVO ANÚNCIO</span>
+            <h1>Cadastre seu equipamento</h1>
+            <p>Edite as fotos e os detalhes diretamente na página do anúncio.</p>
+        </div>
+        <div class="listing-storage-notice" id="productStorageNotice">
+            <i class="bi bi-info-circle" aria-hidden="true"></i>
+            <div><strong>Rascunho neste navegador</strong><p>O salvamento no catálogo ainda não está disponível. Os dados e as fotos podem ser salvos somente neste navegador; o anúncio não será publicado.</p></div>
+        </div>
+        <noscript><p class="product-message product-message-error">Ative o JavaScript para editar as imagens e salvar um rascunho. Nenhum dado será enviado ao servidor.</p></noscript>
+
+        <form id="productForm" class="listing-detail card-panel" aria-describedby="productStorageNotice">
+            <section class="listing-gallery" aria-labelledby="galleryTitle">
+                <div class="listing-section-heading">
+                    <h2 id="galleryTitle">Fotos do equipamento</h2>
+                    <span id="productImageCount">0 de 8 fotos</span>
+                </div>
+                <div class="product-carousel" id="productCarousel" role="region" aria-roledescription="carrossel" aria-label="Fotos do equipamento" tabindex="0">
+                    <div class="product-carousel-stage">
+                        <img id="previewImage" class="product-carousel-image" alt="" hidden>
+                        <div id="previewImageEmpty" class="product-image-empty">
+                            <i class="bi bi-images" aria-hidden="true"></i>
+                            <p id="previewImageEmptyText">Adicione fotos para apresentar o equipamento.</p>
+                        </div>
+                        <button type="button" id="previousProductImage" class="product-carousel-arrow product-carousel-previous" aria-label="Foto anterior" hidden><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+                        <button type="button" id="nextProductImage" class="product-carousel-arrow product-carousel-next" aria-label="Próxima foto" hidden><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+                        <span id="previewImageCounter" class="product-carousel-counter" aria-live="polite" aria-atomic="true" hidden></span>
+                    </div>
+                    <div id="productImageThumbnails" class="product-thumbnails" aria-label="Selecionar foto" hidden></div>
+                </div>
+                <label class="product-upload" for="productImages">
+                    <i class="bi bi-cloud-arrow-up" aria-hidden="true"></i>
+                    <span>Adicionar fotos do equipamento</span>
+                    <input id="productImages" type="file" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="imageHelp">
+                </label>
+                <p class="product-field-help" id="imageHelp">Até 8 fotos JPG, PNG ou WebP de até 2 MB cada. A primeira foto será a capa.</p>
+                <div class="product-field">
+                    <label for="productImageUrl">Ou adicionar pelo endereço da imagem</label>
+                    <div class="product-image-url">
+                        <input id="productImageUrl" type="text" inputmode="url" maxlength="2048" placeholder="https://exemplo.com/foto.jpg">
+                        <button type="button" id="addProductImage" class="product-button product-button-secondary">Adicionar</button>
+                    </div>
+                </div>
+                <p id="imageMessage" class="product-message" role="status" aria-live="polite" hidden></p>
+                <ul id="productImageList" class="product-image-list" aria-label="Gerenciar fotos adicionadas"></ul>
+            </section>
+
+            <section class="listing-summary" aria-label="Título, preço, disponibilidade e contato">
+                <div class="product-field listing-title">
+                    <label for="productName">Título do anúncio</label>
+                    <textarea id="productName" name="name" rows="2" maxlength="120" placeholder="Ex.: Compressor de ar 100 litros"></textarea>
+                </div>
+                <div class="product-field listing-price">
+                    <label for="productPrice">Preço (R$)</label>
+                    <input id="productPrice" name="price" type="number" min="0" max="999999999.99" step="0.01" inputmode="decimal" placeholder="0,00" aria-describedby="productPriceHelp">
+                    <p class="product-field-help" id="productPriceHelp">Informe o valor do equipamento em reais.</p>
+                </div>
+                <div class="product-field listing-availability">
+                    <label for="productAvailability">Disponibilidade</label>
+                    <select id="productAvailability" name="available">
+                        <option value="true">Disponível</option>
+                        <option value="false">Indisponível</option>
+                    </select>
+                </div>
+                <section class="listing-contact" aria-labelledby="contactTitle">
+                    <h2 id="contactTitle">Contato pelo WhatsApp</h2>
+                    <a id="previewWhatsapp" class="product-whatsapp is-disabled" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1" aria-describedby="previewWhatsappHelp"><i class="bi bi-whatsapp" aria-hidden="true"></i> <span id="previewWhatsappText">Tenho interesse</span></a>
+                    <p id="previewWhatsappHelp" class="product-contact-help">Adicione um número de WhatsApp para ativar o contato.</p>
+                    <div class="product-field">
+                        <label for="productWhatsapp">Número com DDI e DDD</label>
+                        <input id="productWhatsapp" name="whatsapp" type="tel" maxlength="25" inputmode="tel" placeholder="55 11 99999-9999" aria-describedby="whatsappHelp">
+                        <p class="product-field-help" id="whatsappHelp">Ex.: 55 + DDD + número. O botão abre uma conversa sobre este equipamento.</p>
+                    </div>
+                </section>
+            </section>
+
+            <section class="listing-description" aria-labelledby="descriptionTitle">
+                <div class="listing-section-heading"><h2 id="descriptionTitle">Descrição</h2><i class="bi bi-pencil" aria-hidden="true"></i></div>
+                <div class="product-field">
+                    <label for="productDescription">Sobre o equipamento</label>
+                    <textarea id="productDescription" name="description" rows="5" maxlength="5000" placeholder="Descreva o equipamento, seu estado de conservação e os diferenciais."></textarea>
+                </div>
+            </section>
+
+            <section class="listing-specifications" aria-labelledby="specificationsTitle">
+                <div class="listing-section-heading"><h2 id="specificationsTitle">Informações técnicas</h2><i class="bi bi-tools" aria-hidden="true"></i></div>
+                <p class="product-field-help">Inclua marca, modelo, potência, dimensões e outras características. Até 20 informações.</p>
+                <div id="productSpecFields" class="product-spec-fields"></div>
+                <button type="button" id="addProductSpec" class="product-button product-button-secondary"><i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar informação</button>
+            </section>
+
+            <footer class="listing-actions">
+                <div class="listing-save-note">
+                    <p class="product-field-help">O rascunho fica apenas neste navegador, incluindo as fotos. Salvar não publica o anúncio.</p>
+                    <p id="productSaveMessage" class="product-message" role="status" aria-live="polite" hidden></p>
+                </div>
+                <div class="listing-action-buttons">
+                    <a href="/adminPanel" id="cancelProductEdit" class="product-button product-button-secondary">Cancelar</a>
+                    <button type="submit" class="product-button product-button-primary" id="saveProductDraft" disabled><i class="bi bi-check2" aria-hidden="true"></i> Salvar rascunho</button>
+                </div>
+            </footer>
+        </form>
+    </div>
+</main>
+
+<template id="productSpecTemplate">
+    <div class="product-spec-row">
+        <div class="product-field">
+            <label class="product-spec-label">Característica</label>
+            <input class="product-spec-key" type="text" maxlength="80" placeholder="Ex.: Potência">
+        </div>
+        <div class="product-field">
+            <label class="product-spec-value-label">Valor</label>
+            <input class="product-spec-value" type="text" maxlength="200" placeholder="Ex.: 2 HP">
+        </div>
+        <button type="button" class="product-spec-remove product-icon-button" aria-label="Remover informação técnica"><i class="bi bi-trash3" aria-hidden="true"></i></button>
+    </div>
+</template>
+
+<script src="/js/product-editor.js"></script>
+</body>
+</html>

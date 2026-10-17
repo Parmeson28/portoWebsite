@@ -1,0 +1,135 @@
+/* Inline equipment listing editor. Keep these rules isolated from the admin panel. */
+.listing-admin { min-width: 0; }
+.listing-admin .listing-admin-topbar { flex-wrap: wrap; gap: .75rem; }
+.listing-admin .listing-admin-topbar .topbar-left { min-width: 0; }
+.listing-admin .listing-admin-topbar .product-back-link { min-height: 44px; }
+.listing-admin .listing-page { max-width: 1440px; padding: 1.75rem; }
+.listing-page .product-page-heading { max-width: 760px; margin-bottom: 1.25rem; }
+.listing-page .product-page-heading p { line-height: 1.65; }
+.listing-page .listing-storage-notice {
+    display: flex; align-items: flex-start; gap: .7rem; margin-bottom: 1.25rem;
+    padding: .9rem 1rem; border: 1px solid #d7e7f2; border-radius: 8px;
+    background: #edf6fc; color: #315e7e; font-size: .82rem; line-height: 1.6;
+}
+.listing-page .listing-storage-notice > i { flex-shrink: 0; margin-top: .1rem; font-size: 1.05rem; }
+.listing-page .listing-storage-notice p { margin: .2rem 0 0; }
+.listing-page .listing-detail {
+    display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    grid-template-areas: "gallery summary" "description summary" "specifications summary" "actions actions";
+    gap: 1.75rem 2rem; padding: 1.75rem; overflow: visible;
+}
+.listing-page .listing-detail > * { min-width: 0; }
+.listing-page .listing-gallery { grid-area: gallery; }
+.listing-page .listing-summary { grid-area: summary; align-self: start; }
+.listing-page .listing-description { grid-area: description; }
+.listing-page .listing-specifications { grid-area: specifications; }
+.listing-page .listing-section-heading {
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: .4rem .75rem; margin-bottom: .85rem;
+}
+.listing-page .listing-detail h2 { margin: 0; color: var(--brand); font-size: 1.05rem; font-weight: 650; line-height: 1.5; }
+.listing-page .listing-section-heading > small,
+.listing-page .listing-section-heading > span { color: #667788; font-size: .75rem; }
+.listing-page .listing-gallery > h2,
+.listing-page .listing-description > h2,
+.listing-page .listing-specifications > h2 { margin-bottom: .85rem; }
+.listing-page .product-carousel { margin: 0; }
+.listing-page .product-carousel-stage { aspect-ratio: 4 / 3; border: 1px solid #e3eaf0; background: #f4f7fa; }
+.listing-page .product-carousel-arrow { width: 44px; height: 44px; }
+.listing-page .product-image-empty { padding: 2rem; line-height: 1.7; }
+.listing-page .product-thumbnails { flex-wrap: wrap; overflow: visible; gap: .5rem; padding: .75rem .15rem .15rem; }
+.listing-page .product-thumbnails button { min-height: 52px; }
+.listing-page .product-upload { min-height: 72px; padding: .9rem; margin-top: 1rem; line-height: 1.55; }
+.listing-page .product-upload > span { min-width: 0; }
+.listing-page .product-image-url { min-width: 0; }
+.listing-page .product-image-url input { width: 0; min-width: 0; }
+.listing-page .product-image-list li { min-width: 0; }
+.listing-page .product-upload-name { overflow-wrap: anywhere; }
+.listing-page .product-image-actions { gap: .5rem; }
+.listing-page .product-cover-button { min-height: 44px; padding: .35rem .5rem; font-size: .73rem; }
+.listing-page .product-icon-button { width: 44px; height: 44px; flex-shrink: 0; }
+.listing-page .listing-summary { padding: 1.25rem; border: 1px solid #e4eaf0; border-radius: 9px; background: #f8fafc; }
+.listing-page .product-field { margin-bottom: 1.15rem; }
+.listing-page .product-field label { color: #475868; font-weight: 600; line-height: 1.5; }
+.listing-page .product-field input,
+.listing-page .product-field textarea,
+.listing-page .product-field select { min-height: 44px; line-height: 1.5; }
+.listing-page .listing-title textarea {
+    min-height: 112px; padding: .65rem .75rem; font-size: clamp(1.35rem, 2.2vw, 2rem);
+    font-weight: 700; line-height: 1.3; color: var(--brand);
+}
+.listing-page .listing-price input { font-size: clamp(1.35rem, 2vw, 1.8rem); font-weight: 700; color: #246c9b; }
+.listing-page .listing-availability select { background-color: #eaf7ef; color: #24704a; }
+.listing-page .listing-availability select.is-unavailable { background-color: #fdecea; color: #a63737; }
+.listing-page .listing-contact { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid #dfe7ed; }
+.listing-page .listing-contact h2 { font-size: .95rem; margin-bottom: .65rem; }
+.listing-page .listing-contact .product-whatsapp { min-height: 48px; margin: 0 0 1rem; padding: .8rem .65rem; text-align: center; }
+.listing-page .listing-contact .product-field { margin-bottom: .5rem; }
+.listing-page .product-contact-help { text-align: left; }
+.listing-page .listing-contact .product-contact-help { margin-bottom: .85rem; }
+.listing-page .listing-description,
+.listing-page .listing-specifications { padding-top: 1.35rem; border-top: 1px solid #e6ecf0; }
+.listing-page .listing-description textarea { min-height: 180px; line-height: 1.75; }
+.listing-page .listing-description .product-field { margin-bottom: 0; }
+.listing-page .product-spec-fields { gap: .85rem; }
+.listing-page .product-spec-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 44px; }
+.listing-page .product-spec-row .product-field { margin: 0; }
+.listing-page .product-spec-remove { margin-bottom: 0; }
+.listing-page .product-button { min-height: 44px; white-space: normal; text-align: center; }
+.listing-page .listing-actions {
+    grid-area: actions; display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem 1.5rem; padding-top: 1.35rem; border-top: 1px solid #e6ecf0;
+}
+.listing-page .listing-save-note { flex: 1 1 260px; min-width: 0; color: #667788; font-size: .78rem; line-height: 1.6; }
+.listing-page .listing-save-note > p { margin: 0; }
+.listing-page .listing-action-buttons { display: flex; flex-wrap: wrap; gap: .65rem; }
+.listing-page .listing-action-buttons .product-button { min-width: 112px; }
+.listing-page .product-message { scroll-margin-top: 100px; }
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .listing-admin .listing-page { padding: 1.25rem; }
+    .listing-page .listing-detail { gap: 1.5rem 1.25rem; padding: 1.25rem; }
+    .listing-page .listing-summary { padding: 1rem; }
+    .listing-page .product-image-list li { flex-wrap: wrap; }
+    .listing-page .product-image-actions { margin-left: auto; }
+    .listing-page .product-image-url { flex-direction: column; }
+    .listing-page .product-image-url input { width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .listing-admin .listing-page { padding: 1.25rem; }
+    .listing-admin .listing-admin-topbar { padding: .6rem 1.25rem; }
+    .listing-admin .listing-admin-topbar h2 { font-size: 1rem; }
+    .listing-page .listing-detail {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "gallery" "summary" "description" "specifications" "actions";
+        gap: 1.5rem; padding: 1.25rem;
+    }
+    .listing-page .listing-summary { padding: 1.15rem; }
+    .listing-page .listing-title textarea { min-height: 100px; font-size: 1.65rem; }
+    .listing-page .product-field input,
+    .listing-page .product-field select,
+    .listing-page .product-field textarea { font-size: 1rem; }
+    .listing-page .listing-price input { font-size: 1.65rem; }
+    .listing-page .listing-title textarea { font-size: 1.65rem; }
+    .listing-page .listing-actions { align-items: stretch; }
+    .listing-page .listing-action-buttons { margin-left: auto; }
+}
+
+@media (max-width: 480px) {
+    .listing-admin .listing-page { padding: 1rem .75rem; }
+    .listing-admin .listing-admin-topbar { padding: .5rem .9rem; gap: .25rem .75rem; }
+    .listing-admin .listing-admin-topbar .product-back-link { font-size: .78rem; }
+    .listing-page .listing-detail { padding: 1rem; gap: 1.25rem; }
+    .listing-page .listing-summary { padding: 1rem .85rem; }
+    .listing-page .product-image-empty { padding: 1rem; }
+    .listing-page .product-image-url { flex-direction: column; }
+    .listing-page .product-image-url input { width: 100%; }
+    .listing-page .product-image-list li { flex-wrap: wrap; }
+    .listing-page .product-image-actions { width: 100%; justify-content: flex-end; }
+    .listing-page .product-spec-row { grid-template-columns: minmax(0, 1fr) 44px; }
+    .listing-page .product-spec-row .product-field:first-child { grid-column: 1 / -1; }
+    .listing-page .listing-save-note { flex-basis: 100%; }
+    .listing-page .listing-action-buttons { width: 100%; margin: 0; }
+    .listing-page .listing-action-buttons .product-button { flex: 1 1 100px; min-width: 0; }
+}

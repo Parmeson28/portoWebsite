@@ -23,5 +23,13 @@ public class AdminController {
         }
         return "adminPanel";
     }
+
+    @GetMapping("/admin/products/preview")
+    public String productPreviewPage() {
+        if (!userAut.getLogged()) {
+            return "redirect:/adminLogin";
+        }
+        return "adminProductPreview";
+    }
     
 }
