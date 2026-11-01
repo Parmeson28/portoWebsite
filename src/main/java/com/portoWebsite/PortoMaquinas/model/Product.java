@@ -5,6 +5,13 @@ public class Product {
     private float price;
     private int quantity;
 
+    public Product(String name, String id, float price, int quantity){
+        this.name = name;
+        this.id = id;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
 
     public String getName() {
         return name;

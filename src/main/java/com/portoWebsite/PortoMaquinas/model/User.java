@@ -1,7 +1,9 @@
 package com.portoWebsite.PortoMaquinas.model;
 
 public class User {
-    private String name, id, password;
+    private String name, password;
+    private int id, permissionLvl;
+
 
     public String getName() {
         return name;
@@ -11,11 +13,11 @@ public class User {
         this.name = name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -25,6 +27,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getPermissionLvl() {
+        return permissionLvl;
+    }
+
+    public void setPermissionLvl(int permissionLvl) {
+        this.permissionLvl = permissionLvl;
     }
 
 }
