@@ -1,7 +1,9 @@
 package com.portoWebsite.PortoMaquinas.repository;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -44,7 +46,7 @@ public class ProductRepository {
                 products.add(a); 
             }
             
-
+            conn.close();
             return products;
 
         }catch(SQLException e){
@@ -55,21 +57,24 @@ public class ProductRepository {
         return new ArrayList<>();
     }
 
-    public void registerProduct(String id, String pname, float price, int qtt){
-        String command = "INSERT INTO products (id, pname, price, qtt) VALUES (" + id + ", " + pname + ", " + Float.toString(price) + ", " + Integer.toString(qtt) + ")";
+    public void registerProduct(String id, String pname, BigDecimal price, int qtt) {
+        String command = "INSERT INTO products (id, pname, price, qtt) VALUES (?, ?, ?, ?)";
 
-        try{
-            Connection conn = DriverManager.getConnection(url, user, password);
-            Statement stmt = conn.createStatement();
-            
-            stmt.executeQuery(command);
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement stmt = conn.prepareStatement(command)) {
+
+            stmt.setString(1, id);
+            stmt.setString(2, pname);
+            stmt.setBigDecimal(3, price);
+            stmt.setInt(4, qtt);
+
+            stmt.executeUpdate();
             System.out.println("registering product");
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(" ====== Error registering product ====== ");
             e.printStackTrace();
         }
-
     }
 
 }

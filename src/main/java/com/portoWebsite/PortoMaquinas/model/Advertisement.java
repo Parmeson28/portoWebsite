@@ -1,10 +1,11 @@
 package com.portoWebsite.PortoMaquinas.model;
 
-public class Advertisement {
-    private String title, description, id;
-    private String productId;  
-    private String userId;
+import java.util.ArrayList;
 
+public class Advertisement {
+    private String title, description, productId;
+    private ArrayList<String> imgsPath = new ArrayList<>();
+    private int id;
 
     public String getTitle() {
         return title;
@@ -18,22 +19,12 @@ public class Advertisement {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getId() {
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+
+    public void setId(int id) {
         this.id = id;
     }
-    public String getProductId() {
-        return productId;
-    }
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-    public String getUserId() {
-        return userId;
-    }
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }    
+
 }
