@@ -4,13 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
-import com.portoWebsite.PortoMaquinas.model.Product;
-
+@Repository 
 public class AdvertisementRepository {
     @Value("${spring.datasource.url}")
     private String url;
@@ -20,8 +19,6 @@ public class AdvertisementRepository {
 
     @Value("${spring.datasource.password}")
     private String password;
-
-    Product product;
     
     public void createNewAd(String title, String description, String productId, ArrayList<String> imgsPath) {
         String command = "INSERT INTO products (title, addescription, productid, imgspath) VALUES (?, ?, ?, ?)";
@@ -39,7 +36,6 @@ public class AdvertisementRepository {
 
         } catch (SQLException e) {
             System.out.println(" ====== Error registering product ====== ");
-            e.printStackTrace();
         }
     }
 }

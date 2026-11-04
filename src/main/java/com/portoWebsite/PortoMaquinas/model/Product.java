@@ -4,6 +4,7 @@ public class Product {
     private String name, id;
     private float price;
     private int quantity;
+    private boolean available;
 
     public Product(String name, String id, float price, int quantity){
         this.name = name;
@@ -36,5 +37,13 @@ public class Product {
     }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }
