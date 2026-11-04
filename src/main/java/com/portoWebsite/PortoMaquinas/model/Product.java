@@ -2,11 +2,11 @@ package com.portoWebsite.PortoMaquinas.model;
 
 public class Product {
     private String name, id;
-    private float price;
-    private int quantity;
+    private Float price;
+    private Integer quantity;
     private boolean available;
 
-    public Product(String name, String id, float price, int quantity){
+    public Product(String name, String id, Float price, Integer quantity){
         this.name = name;
         this.id = id;
         this.price = price;

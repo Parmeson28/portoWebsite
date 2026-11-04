@@ -12,7 +12,7 @@
     <div class="sidebar-brand"><i class="bi bi-grid-fill" aria-hidden="true"></i> Admin Panel</div>
     <ul class="sidebar-nav">
         <li><a th:href="@{/adminPanel}"><i class="bi bi-house-door" aria-hidden="true"></i> Dashboard</a></li>
-        <li><a th:href="@{/admin/products/preview}" class="active" aria-current="page"><i class="bi bi-box-seam" aria-hidden="true"></i> Produtos</a></li>
+        <li><a th:href="@{/adminPanel/advertisements}" class="active" aria-current="page"><i class="bi bi-box-seam" aria-hidden="true"></i> Advertisements</a></li>
     </ul>
     <div class="sidebar-footer"><span>&copy; 2026 Porto Máquinas</span></div>
 </aside>
@@ -20,9 +20,11 @@
 <main class="main listing-admin">
     <header class="topbar listing-admin-topbar">
         <div class="topbar-left">
-            <h2>Produtos</h2>
+            <h2>New Advertisement</h2>
         </div>
-        <a class="product-back-link" th:href="@{/adminPanel}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar ao painel</a>
+        <a class="product-back-link" th:href="@{/adminPanel/advertisements}">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar aos anúncios
+        </a>
     </header>
 
     <div class="content product-editor-page listing-page">
@@ -36,13 +38,13 @@
             <i class="bi bi-info-circle" aria-hidden="true"></i>
             <div>
                 <strong>Cadastro em etapas</strong>
-                <p>Por enquanto este formulário salva título, preço, disponibilidade e descrição. Fotos, informações técnicas e o número do WhatsApp entram nas próximas etapas.</p>
+                <p>Por enquanto este formulário salva título, preço, quantidade, disponibilidade e descrição. Fotos, informações técnicas e o número do WhatsApp entram nas próximas etapas.</p>
             </div>
         </div>
 
         <p class="product-message product-message-error" role="alert" th:if="${error}" th:text="${error}"></p>
 
-        <form class="card-panel product-edit-form" th:action="@{/admin/anuncios}" method="post">
+        <form class="card-panel product-edit-form" th:action="@{/adminPanel/advertisements}" method="post">
             <fieldset class="product-fieldset">
                 <legend>Dados do anúncio</legend>
 
@@ -53,7 +55,7 @@
                            th:value="${adForm?.title}">
                 </div>
 
-                <div class="product-field-grid">
+                <div class="product-field-grid" style="grid-template-columns: 1fr 1fr 1fr;">
                     <div class="product-field listing-price">
                         <label for="adPrice">Preço (R$)</label>
                         <input id="adPrice" name="price" type="number" required
@@ -61,6 +63,14 @@
                                placeholder="0,00" aria-describedby="adPriceHelp"
                                th:value="${adForm?.price}">
                         <p class="product-field-help" id="adPriceHelp">Informe o valor do equipamento em reais.</p>
+                    </div>
+
+                    <div class="product-field">
+                        <label for="adQuantity">Quantidade</label>
+                        <input id="adQuantity" name="quantity" type="number" required
+                               min="1" max="999999" step="1" inputmode="numeric"
+                               placeholder="1"
+                               th:value="${adForm?.quantity}">
                     </div>
 
                     <div class="product-field listing-availability">
@@ -88,7 +98,7 @@
                     <p class="product-field-help">Ao salvar, o anúncio é gravado no banco de dados.</p>
                 </div>
                 <div class="listing-action-buttons">
-                    <a th:href="@{/adminPanel}" class="product-button product-button-secondary">Cancelar</a>
+                    <a th:href="@{/adminPanel/advertisements}" class="product-button product-button-secondary">Cancelar</a>
                     <button type="submit" class="product-button product-button-primary"><i class="bi bi-check2" aria-hidden="true"></i> Salvar anúncio</button>
                 </div>
             </div>

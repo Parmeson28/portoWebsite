@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncios | Porto Máquinas</title>
+    <link href="/css/common.css" rel="stylesheet">
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><i class="bi bi-grid-fill" aria-hidden="true"></i> Admin Panel</div>
+    <ul class="sidebar-nav">
+        <li><a th:href="@{/adminPanel}"><i class="bi bi-house-door" aria-hidden="true"></i> Dashboard</a></li>
+        <li><a th:href="@{/adminPanel/advertisements}" class="active" aria-current="page"><i class="bi bi-megaphone" aria-hidden="true"></i> Advertisements</a></li>
+    </ul>
+    <div class="sidebar-footer"><span>&copy; 2026 Porto Máquinas</span></div>
+</aside>
+
+<div class="sidebar-backdrop" id="backdrop"></div>
+
+<main class="main">
+    <header class="topbar">
+        <div class="topbar-left">
+            <button class="hamburger" aria-label="Abrir menu"><i class="bi bi-list"></i></button>
+            <h2>Advertisements</h2>
+        </div>
+        <div class="topbar-right">
+            <a th:href="@{/admin/advertisements/new}" class="btn-sm-action">
+                <i class="bi bi-plus-lg" aria-hidden="true"></i> Novo anúncio
+            </a>
+        </div>
+    </header>
+
+    <div class="content">
+        <p class="product-message" th:if="${success}" th:text="${success}" style="margin-bottom:1rem;"></p>
+        <p class="product-message product-message-error" th:if="${error}" th:text="${error}" style="margin-bottom:1rem;"></p>
+
+        <div class="card-panel">
+            <div class="card-panel-header">
+                <h3>Todos os anúncios</h3>
+            </div>
+
+            <table class="table" th:if="${!ads.isEmpty()}">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Preço</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ad : ${ads}">
+                        <td th:text="${ad.id}"></td>
+                        <td th:text="${ad.title}"></td>
+                        <td th:text="'R$ ' + ${#numbers.formatDecimal(ad.price, 1, 'POINT', 2, 'COMMA')}"></td>
+                        <td>
+                            <span class="badge-status badge-active" th:if="${ad.available}">Disponível</span>
+                            <span class="badge-status badge-blocked" th:unless="${ad.available}">Indisponível</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div th:if="${ads.isEmpty()}" style="padding:2.5rem; text-align:center; color:#7f8c8d;">
+                <p style="font-size:.95rem; margin-bottom:.75rem;">Nenhum anúncio cadastrado ainda.</p>
+                <a th:href="@{/admin/advertisements/new}" class="btn-sm-action">
+                    <i class="bi bi-plus-lg" aria-hidden="true"></i> Criar primeiro anúncio
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/js/common.js"></script>
+</body>
+</html>
